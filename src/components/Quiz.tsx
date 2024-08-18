@@ -11,13 +11,23 @@ type Question = {
 
 const quizQuestions: Question[] = [
   {
-    question: 'Hi!',
+    question: 'Selecciona la respuesta más apropiada para: "Hi!"',
     options: ['What', 'Yes', 'Hi!'],
     answer: 3,
     feedback: [
       'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
       'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
       'Correcto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.'
+    ]
+  },
+  {
+    question: 'Which of these are colors?',
+    options: ['Orange, blue, red', 'Dark, light, transparent', 'Tired, happy, sad'],
+    answer: 3,
+    feedback: [
+      'Correct. Orange, blue, and red are some common colors.',
+      'Incorrect. Try again.',
+      'Incorrect. Tired, happy, and sad are adjectives.'
     ]
   }
   // Añade más preguntas aquí
@@ -56,7 +66,7 @@ export const Quiz: React.FC = () => {
       {showResult ? (
         <div className="w-full max-w-xl rounded-lg bg-white p-8 text-center shadow-lg">
           <h2 className="mb-4 text-2xl font-bold">
-            {percentageScore > 70 ? '¡Felicitaciones!' : '¡Bien hecho!'}
+            {percentageScore > 80 ? '¡Felicitaciones!' : '¡Sigue intentándolo!'}
           </h2>
           <p className="mb-6 text-lg">
             Obtuviste {score} de {quizQuestions.length} respuestas correctas (
