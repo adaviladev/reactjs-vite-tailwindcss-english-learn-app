@@ -11,33 +11,13 @@ type Question = {
 
 const quizQuestions: Question[] = [
   {
-    question: '¿Cuál es el idioma más hablado en el mundo?',
-    options: ['Inglés', 'Mandarín', 'Español'],
-    answer: 1,
+    question: 'Hi!',
+    options: ['What', 'Yes', 'Hi!'],
+    answer: 3,
     feedback: [
-      'Incorrecto. El inglés es ampliamente hablado, pero no es el más hablado.',
-      '¡Correcto! El mandarín es el idioma más hablado en el mundo.',
-      'Incorrecto. El español es muy hablado, pero no tanto como el mandarín.'
-    ]
-  },
-  {
-    question: '¿En qué año llegó el hombre a la luna?',
-    options: ['1965', '1969', '1972'],
-    answer: 1,
-    feedback: [
-      'Incorrecto. La misión Apolo 11 llegó a la luna en 1969.',
-      '¡Correcto! El hombre llegó a la luna en 1969 durante la misión Apolo 11.',
-      'Incorrecto. La misión Apolo 11 llegó a la luna en 1969.'
-    ]
-  },
-  {
-    question: '¿Cuál es el planeta conocido como el planeta rojo?',
-    options: ['Venus', 'Marte', 'Júpiter'],
-    answer: 1,
-    feedback: [
-      'Incorrecto. Venus es el segundo planeta desde el sol, pero no es el planeta rojo.',
-      '¡Correcto! Marte es conocido como el planeta rojo debido a su color característico.',
-      'Incorrecto. Júpiter es el planeta más grande del sistema solar, pero no es el planeta rojo.'
+      'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
+      'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
+      'Correcto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.'
     ]
   }
   // Añade más preguntas aquí
@@ -102,13 +82,15 @@ export const Quiz: React.FC = () => {
               {quizQuestions[currentQuestion].options.map((option, index) => (
                 <div key={index}>
                   <label
-                    className={`transition ease-in-out delay-150 ${
+                    className={`transition delay-100 ease-in-out ${
                       selectedOption === null
                         ? 'hover:-translate-y-1 hover:scale-105 hover:bg-neutral-300'
                         : ''
-                    } duration-300 block cursor-pointer rounded-lg border p-4 ${
+                    } block cursor-pointer rounded-lg border p-4 duration-300 ${
                       selectedOption === index
-                        ? 'bg-blue-600 text-white'
+                        ? index === quizQuestions[currentQuestion].answer
+                          ? 'bg-green-500 text-white'
+                          : 'bg-red-500 text-white'
                         : 'bg-gray-200'
                     } ${selectedOption !== null ? 'cursor-default' : ''}`}
                     onClick={() => handleOptionClick(index)}
