@@ -54,26 +54,26 @@ export const Quiz: React.FC = () => {
   const percentageScore = (score / quizQuestions.length) * 100
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-gray-100">
       {showResult ? (
-        <div className="w-full max-w-xl bg-white p-8 shadow-lg rounded-lg text-center">
-          <h2 className="text-2xl font-bold mb-4">
+        <div className="w-full max-w-xl rounded-lg bg-white p-8 text-center shadow-lg">
+          <h2 className="mb-4 text-2xl font-bold">
             {percentageScore > 70 ? '¡Felicitaciones!' : '¡Bien hecho!'}
           </h2>
-          <p className="text-lg mb-6">
+          <p className="mb-6 text-lg">
             Obtuviste {score} de {quizQuestions.length} respuestas correctas (
             {percentageScore}%).
           </p>
           {percentageScore > 70 && <Confetti width={width} height={height} />}
           <button
-            className="bg-blue-600 text-white p-2 rounded-lg"
+            className="rounded-lg bg-blue-600 p-2 text-white"
             onClick={() => window.location.reload()}
           >
             Volver a intentar
           </button>
         </div>
       ) : (
-        <div className="w-full max-w-xl bg-white p-8 shadow-lg rounded-lg">
+        <div className="w-full max-w-xl rounded-lg bg-white p-8 shadow-lg">
           <div>
             <div className="mb-6">
               <h3 className="text-xl font-semibold">
@@ -84,7 +84,7 @@ export const Quiz: React.FC = () => {
               {quizQuestions[currentQuestion].options.map((option, index) => (
                 <div key={index}>
                   <label
-                    className={`block p-4 border rounded-lg cursor-pointer ${
+                    className={`block cursor-pointer rounded-lg border p-4 ${
                       selectedOption === index
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200'
@@ -94,7 +94,7 @@ export const Quiz: React.FC = () => {
                     {option}
                   </label>
                   {selectedOption === index && selectedOption !== null && (
-                    <div className="mt-2 text-lg font-bold text-center">
+                    <div className="mt-2 text-center text-lg font-bold">
                       {index === quizQuestions[currentQuestion].answer
                         ? '¡Correcto!'
                         : 'Incorrecto.'}
@@ -105,7 +105,7 @@ export const Quiz: React.FC = () => {
             </div>
             {selectedOption !== null && (
               <button
-                className="mt-6 w-full bg-blue-600 text-white p-2 rounded-lg"
+                className="mt-6 w-full rounded-lg bg-blue-600 p-2 text-white"
                 onClick={handleNextQuestion}
               >
                 {currentQuestion < quizQuestions.length - 1
