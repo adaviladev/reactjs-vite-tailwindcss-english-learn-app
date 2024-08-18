@@ -72,7 +72,7 @@ export const Quiz: React.FC = () => {
   const percentageScore = (score / quizQuestions.length) * 100
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-indigo-950">
       {showResult ? (
         <div className="w-full max-w-xl rounded-lg bg-white p-8 text-center shadow-lg">
           <h2 className="mb-4 text-2xl font-bold">
@@ -102,7 +102,11 @@ export const Quiz: React.FC = () => {
               {quizQuestions[currentQuestion].options.map((option, index) => (
                 <div key={index}>
                   <label
-                    className={`block cursor-pointer rounded-lg border p-4 ${
+                    className={`transition ease-in-out delay-150 ${
+                      selectedOption === null
+                        ? 'hover:-translate-y-1 hover:scale-105 hover:bg-neutral-300'
+                        : ''
+                    } duration-300 block cursor-pointer rounded-lg border p-4 ${
                       selectedOption === index
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200'
@@ -111,7 +115,7 @@ export const Quiz: React.FC = () => {
                   >
                     {option}
                   </label>
-                  {selectedOption === index && selectedOption !== null && (
+                  {selectedOption === index && (
                     <div className="mt-2 text-center text-lg font-bold">
                       {quizQuestions[currentQuestion].feedback[index]}
                     </div>
