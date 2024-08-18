@@ -6,23 +6,39 @@ type Question = {
   question: string
   options: string[]
   answer: number
+  feedback: string[] // Array para feedbacks específicos para cada opción
 }
 
 const quizQuestions: Question[] = [
   {
     question: '¿Cuál es el idioma más hablado en el mundo?',
     options: ['Inglés', 'Mandarín', 'Español'],
-    answer: 1
+    answer: 1,
+    feedback: [
+      'Incorrecto. El inglés es ampliamente hablado, pero no es el más hablado.',
+      '¡Correcto! El mandarín es el idioma más hablado en el mundo.',
+      'Incorrecto. El español es muy hablado, pero no tanto como el mandarín.'
+    ]
   },
   {
     question: '¿En qué año llegó el hombre a la luna?',
     options: ['1965', '1969', '1972'],
-    answer: 1
+    answer: 1,
+    feedback: [
+      'Incorrecto. La misión Apolo 11 llegó a la luna en 1969.',
+      '¡Correcto! El hombre llegó a la luna en 1969 durante la misión Apolo 11.',
+      'Incorrecto. La misión Apolo 11 llegó a la luna en 1969.'
+    ]
   },
   {
     question: '¿Cuál es el planeta conocido como el planeta rojo?',
     options: ['Venus', 'Marte', 'Júpiter'],
-    answer: 1
+    answer: 1,
+    feedback: [
+      'Incorrecto. Venus es el segundo planeta desde el sol, pero no es el planeta rojo.',
+      '¡Correcto! Marte es conocido como el planeta rojo debido a su color característico.',
+      'Incorrecto. Júpiter es el planeta más grande del sistema solar, pero no es el planeta rojo.'
+    ]
   }
   // Añade más preguntas aquí
 ]
@@ -35,9 +51,11 @@ export const Quiz: React.FC = () => {
   const { width, height } = useWindowSize()
 
   const handleOptionClick = (index: number) => {
-    setSelectedOption(index)
-    if (index === quizQuestions[currentQuestion].answer) {
-      setScore((prevScore) => prevScore + 1)
+    if (selectedOption === null) {
+      setSelectedOption(index)
+      if (index === quizQuestions[currentQuestion].answer) {
+        setScore((prevScore) => prevScore + 1)
+      }
     }
   }
 
@@ -88,16 +106,14 @@ export const Quiz: React.FC = () => {
                       selectedOption === index
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200'
-                    }`}
+                    } ${selectedOption !== null ? 'cursor-default' : ''}`}
                     onClick={() => handleOptionClick(index)}
                   >
                     {option}
                   </label>
                   {selectedOption === index && selectedOption !== null && (
                     <div className="mt-2 text-center text-lg font-bold">
-                      {index === quizQuestions[currentQuestion].answer
-                        ? '¡Correcto!'
-                        : 'Incorrecto.'}
+                      {quizQuestions[currentQuestion].feedback[index]}
                     </div>
                   )}
                 </div>
