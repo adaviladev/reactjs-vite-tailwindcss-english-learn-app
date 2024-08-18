@@ -13,7 +13,7 @@ const quizQuestions: Question[] = [
   {
     question: 'Selecciona la respuesta más apropiada para: "Hi!"',
     options: ['What', 'Yes', 'Hi!'],
-    answer: 3,
+    answer: 2, // Cambio de índice para ajustar la respuesta correcta
     feedback: [
       'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
       'Incorrecto. Puedes responder el saludo "Hi" ("Hola") con el mismo saludo.',
@@ -22,12 +22,16 @@ const quizQuestions: Question[] = [
   },
   {
     question: 'Which of these are colors?',
-    options: ['Orange, blue, red', 'Dark, light, transparent', 'Tired, happy, sad'],
-    answer: 3,
+    options: [
+      'Orange, blue, red',
+      'Dark, light, transparent',
+      'Tired, happy, sad'
+    ],
+    answer: 0, // Cambio de índice para ajustar la respuesta correcta
     feedback: [
-      'Correct. Orange, blue, and red are some common colors.',
-      'Incorrect. Try again.',
-      'Incorrect. Tired, happy, and sad are adjectives.'
+      'Correcto. Orange, blue, and red are colors.',
+      'Incorrecto. Dark, light, and transparent are not colors.',
+      'Incorrecto. Tired, happy, and sad are emotions, not colors.'
     ]
   }
   // Añade más preguntas aquí
@@ -97,10 +101,12 @@ export const Quiz: React.FC = () => {
                         ? 'hover:-translate-y-1 hover:scale-105 hover:bg-neutral-300'
                         : ''
                     } block cursor-pointer rounded-lg border p-4 duration-300 ${
-                      selectedOption === index
+                      selectedOption !== null
                         ? index === quizQuestions[currentQuestion].answer
                           ? 'bg-green-500 text-white'
-                          : 'bg-red-500 text-white'
+                          : index === selectedOption
+                            ? 'bg-red-500 text-white'
+                            : 'bg-gray-200'
                         : 'bg-gray-200'
                     } ${selectedOption !== null ? 'cursor-default' : ''}`}
                     onClick={() => handleOptionClick(index)}
