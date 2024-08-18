@@ -29,9 +29,24 @@ const quizQuestions: Question[] = [
     ],
     answer: 0, // Cambio de índice para ajustar la respuesta correcta
     feedback: [
-      'Correcto. Orange, blue, and red are colors.',
-      'Incorrecto. Dark, light, and transparent are not colors.',
-      'Incorrecto. Tired, happy, and sad are emotions, not colors.'
+      'Correct. Orange, blue, and red are colors.',
+      'Incorrect. Dark, light, and transparent are not colors.',
+      'Incorrect. Tired, happy, and sad are emotions, not colors.'
+    ]
+  },
+  {
+    question:
+      'Read the following text and select the true option: Hello! My name is Maria and I’m from Spain. I am a teacher. I work with young children. In my free time, I like to read books and cook Spanish food for my family. At the weekend, I enjoy meeting friends. We often visit museums and sometimes go to concerts. ',
+    options: [
+      'Maria is from Spain',
+      'Maria is a student.',
+      "She doesn't have any friends."
+    ],
+    answer: 0, // Cambio de índice para ajustar la respuesta correcta
+    feedback: [
+      'Correct. She is Spanish.',
+      'Incorrect. She is a teacher.',
+      'Incorrect. She enjoys meeting friends.'
     ]
   }
   // Añade más preguntas aquí
