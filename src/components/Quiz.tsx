@@ -36,7 +36,7 @@ const quizQuestions: Question[] = [
   },
   {
     question:
-      'Read the following text and select the true option: Hello! My name is Maria and I’m from Spain. I am a teacher. I work with young children. In my free time, I like to read books and cook Spanish food for my family. At the weekend, I enjoy meeting friends. We often visit museums and sometimes go to concerts. ',
+      'Read the following text and select the true option:\n\nHello! My name is Maria and I’m from Spain. I am a teacher. I work with young children. In my free time, I like to read books and cook Spanish food for my family. At the weekend, I enjoy meeting friends. We often visit museums and sometimes go to concerts. ',
     options: [
       'Maria is from Spain',
       'Maria is a student.',
